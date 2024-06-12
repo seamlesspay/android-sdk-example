@@ -1,16 +1,33 @@
-<!-- [<img width="250" height="119" src="https://raw.githubusercontent.com/seamlesspay/seamlesspay-android/master/assets/stripe_logo_slate_small.png"/>](https://seamlesspay.com/docs/mobile/android) -->
-
-# SeamlessPay Android
+# SeamlessPay Android Example App
 
 [![License](https://img.shields.io/github/license/seamlesspay/seamlesspay-android)](https://github.com/seamlesspay/seamlesspay-android/blob/master/LICENSE)
 
 ## Overview
 
-SeamlessPay Android provides drop-in UI Components that can be used
-to collect your users' payment details and process payments from within your
-app. We also expose the Base SDK that allow you to use our API directly.
+The Android Example App demonstrates the basic usage of UI components.
+It includes examples of initializing UI components with various configurations.
+With this app, you can carry out tokenization, refund, and charge requests.
+All code samples are found in the ```MainActivity``` class.
 
-Get started with [📚 integration guide](https://docs.seamlesspay.com/android-sdk).
+Ensure to replace the placeholder authorization data with your own to successfully
+perform the requests.
+
+
+```java 
+Authorization authorization = Authorization
+    .fromKeys("staging", "pk_XXXXXXXXXXXXXXXXXXXXXXXXXX", "MRT_XXXXXXXXXXXXXXXXXXXXXXXXXX");
+```
+
+You can also modify the field configuration yourself and initialize UI Components with this data.
+
+```java 
+FieldOptions option = new FieldOptions(
+		new FieldConfiguration(DisplayConfiguration.REQUIRED),
+		new FieldConfiguration(DisplayConfiguration.REQUIRED)
+		);
+```
+Once you have completed the setup, select 'demo' under the Run/Debug Configuration
+and then run the project.
 
 ## Installation
 
@@ -27,11 +44,3 @@ Note: If you do have the Android SDK installed, add a `local.properties`
 file to the top level directory with `sdk.dir=/path/to/your/sdk/.android-sdk`
 
 </p></details>
-
-## Example Apps
-
-The SeamlessPay Android SDK comes bundled with the following demo apps:
-
-- **[`Demo`](demo)**: Basic setup and usage of UI Components
-
-Run `./gradlew :demo:installDebug` to install the [Demo](demo) app on a device.
