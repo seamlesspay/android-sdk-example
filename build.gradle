@@ -1,0 +1,26 @@
+buildscript {
+    apply from: 'dependencies.gradle'
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath buildLibs.androidGradlePlugin
+        classpath buildLibs.mavenGradlePlugin
+        classpath buildLibs.kotlinGradlePlugin
+        classpath buildLibs.dokkaPlugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    ext {
+        compileSdkVersion = 34
+        minSdkVersion = 21
+        targetSdkVersion = 28
+    }
+}

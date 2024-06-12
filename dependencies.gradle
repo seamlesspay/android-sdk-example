@@ -1,0 +1,43 @@
+ext.versions = [
+    androidGradlePlugin         : '8.2.2',
+    mavenGradlePlugin           : '1.5',
+    kotlin                      : '1.9.22',
+    dokka                       : '0.9.17',
+    androidxAnnotation          : '1.8.0',
+    androidxAppcompat           : '1.6.1',
+    androidxRecyclerview        : '1.3.2',
+    material                    : '1.12.0',
+    androidxCore                : '1.13.1',
+    sentry                      : '6.6.0',
+    androidxConstraintlayout    : '2.1.4',
+    junit                       : '4.13.2',
+    mockito                     : '4.0.0',
+]
+
+ext.buildLibs = [
+    androidGradlePlugin         : "com.android.tools.build:gradle:${versions.androidGradlePlugin}",
+    mavenGradlePlugin           : "com.github.dcendents:android-maven-gradle-plugin:${versions.mavenGradlePlugin}",
+    dokkaPlugin                 : "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}",
+    kotlinGradlePlugin          : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+]
+
+ext.libs = [
+    androidx                            : [
+        annotation        : "androidx.annotation:annotation:${versions.androidxAnnotation}",
+        appCompat         : "androidx.appcompat:appcompat:${versions.androidxAppcompat}",
+        constraintLayout  : "androidx.constraintlayout:constraintlayout:${versions.androidxConstraintlayout}",
+        coreKtx           : "androidx.core:core-ktx:${versions.androidxCore}",
+        fragment          : "androidx.fragment:fragment-ktx:${versions.androidxFragment}",
+        recyclerView      : "androidx.recyclerview:recyclerview:${versions.androidxRecyclerview}"
+    ],
+    kotlin                              : [
+        std        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
+    ],
+    mockito              : [
+        android: "org.mockito:mockito-android:${versions.mockito}",
+        core   : "org.mockito:mockito-core:${versions.mockito}"
+    ],
+    material       : "com.google.android.material:material:${versions.material}",
+    sentry         : "io.sentry:sentry:${versions.sentry}",
+    junit          : "junit:junit:${versions.junit}",
+]
