@@ -30,10 +30,13 @@ do
   fi
 done
 
-# Check if any string was found in any file
 if [ "$FOUND" = false ]; then
   echo "None of the search strings were found in any changed files."
-else
-  echo "You need to remove local dependencies from gradle files."
+fi
+
+if [ "$FOUND" = true ]; then
+  echo "Aborting commit due to prohibited strings found in the changed files."
   exit 1
 fi
+
+exit 0
