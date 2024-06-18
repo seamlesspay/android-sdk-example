@@ -1,0 +1,33 @@
+#!/bin/bash
+
+SEARCH_STRINGS=("include ':sdk'" "implementation project(':sdk')" "project(':sdk').projectDir")
+
+EXCLUDE_FILES=(".scripts/pre-commit")
+
+SPECIFIC_FILES=("settings.gradle" "./example/build.gradle")
+
+REPO_ROOT=$(git rev-parse --show-toplevel)
+cd "$REPO_ROOT"
+
+FOUND=false
+
+for FILE in "${SPECIFIC_FILES[@]}";
+do
+  if [ -f "$FILE" ]; then
+    for SEARCH_STRING in "${SEARCH_STRINGS[@]}"; do
+      if grep -q "$SEARCH_STRING" "$FILE"; then
+        echo "String '$SEARCH_STRING' found in $FILE"
+        FOUND=true
+      fi
+    done
+  else
+    echo "Warning: File $FILE does not exist."
+  fi
+done
+
+if [ "$FOUND" = true ]; then
+  echo "Aborting commit due to local dependencies were found in the gradle files."
+  exit 1
+fi
+
+exit 0
