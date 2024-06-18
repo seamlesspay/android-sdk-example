@@ -4,20 +4,15 @@ SEARCH_STRINGS=("include ':sdk'" "implementation project(':sdk')" "project(':sdk
 
 EXCLUDE_FILES=(".scripts/pre-commit")
 
-cd "$(git rev-parse --show-toplevel)"
+SPECIFIC_FILES=("settings.gradle" "./example/build.gradle")
 
-CHANGED_FILES=$(git diff --name-only)
-
-echo "Changed files: $CHANGED_FILES"
+REPO_ROOT=$(git rev-parse --show-toplevel)
+cd "$REPO_ROOT"
 
 FOUND=false
 
-for FILE in $CHANGED_FILES;
+for FILE in "${SPECIFIC_FILES[@]}";
 do
-  if [[ " ${EXCLUDE_FILES[@]} " =~ " $FILE " ]]; then
-    continue
-  fi
-
   if [ -f "$FILE" ]; then
     for SEARCH_STRING in "${SEARCH_STRINGS[@]}"; do
       if grep -q "$SEARCH_STRING" "$FILE"; then
@@ -30,12 +25,8 @@ do
   fi
 done
 
-if [ "$FOUND" = false ]; then
-  echo "None of the search strings were found in any changed files."
-fi
-
 if [ "$FOUND" = true ]; then
-  echo "Aborting commit due to local dependencies found in the changed files."
+  echo "Aborting commit due to local dependencies were found in the gradle files."
   exit 1
 fi
 
