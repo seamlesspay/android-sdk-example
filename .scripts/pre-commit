@@ -1,0 +1,39 @@
+#!/bin/bash
+
+SEARCH_STRINGS=("include ':sdk'" "implementation project(':sdk')" "project(':sdk').projectDir")
+
+EXCLUDE_FILES=(".scripts/pre-commit")
+
+cd "$(git rev-parse --show-toplevel)"
+
+CHANGED_FILES=$(git diff --name-only)
+
+echo "Changed files: $CHANGED_FILES"
+
+FOUND=false
+
+for FILE in $CHANGED_FILES;
+do
+  if [[ " ${EXCLUDE_FILES[@]} " =~ " $FILE " ]]; then
+    continue
+  fi
+
+  if [ -f "$FILE" ]; then
+    for SEARCH_STRING in "${SEARCH_STRINGS[@]}"; do
+      if grep -q "$SEARCH_STRING" "$FILE"; then
+        echo "String '$SEARCH_STRING' found in $FILE"
+        FOUND=true
+      fi
+    done
+  else
+    echo "Warning: File $FILE does not exist."
+  fi
+done
+
+# Check if any string was found in any file
+if [ "$FOUND" = false ]; then
+  echo "None of the search strings were found in any changed files."
+else
+  echo "You need to remove local dependencies from gradle files."
+  exit 1
+fi
