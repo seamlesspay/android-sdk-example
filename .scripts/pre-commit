@@ -35,7 +35,7 @@ if [ "$FOUND" = false ]; then
 fi
 
 if [ "$FOUND" = true ]; then
-  echo "Aborting commit due to prohibited strings found in the changed files."
+  echo "Aborting commit due to local dependencies found in the changed files."
   exit 1
 fi
 
