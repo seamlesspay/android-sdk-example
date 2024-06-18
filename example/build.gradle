@@ -23,6 +23,7 @@ dependencies {
     implementation libs.material
     implementation libs.kotlin.std
     implementation libs.androidx.constraintLayout
+    
     implementation project(':sdk')
     testImplementation libs.junit
 }
