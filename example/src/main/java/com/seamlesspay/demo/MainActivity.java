@@ -19,7 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.seamlesspay.api.exceptions.InvalidArgumentException;
-import com.seamlesspay.api.models.Authorization;
+import com.seamlesspay.api.models.ClientConfiguration;
 import com.seamlesspay.example.R;
 import com.seamlesspay.ui.common.PaymentCallback;
 import com.seamlesspay.ui.common.TokenizeCallback;
@@ -88,16 +88,12 @@ public class MainActivity extends AppCompatActivity {
 		mMultiLineCardForm = findViewById(R.id.cardMultiLine);
 
 		try {
-			Authorization authorization =
-					Authorization.fromKeys("staging", "pk_XXXXXXXXXXXXXXXXXXXXXXXXXX",
-							"MRT_XXXXXXXXXXXXXXXXXXXXXXXXXX");
-
-			FieldOptions option = new FieldOptions(
-					new FieldConfiguration(DisplayConfiguration.REQUIRED),
-					new FieldConfiguration(DisplayConfiguration.REQUIRED)
-			);
-			mSingleLineCardForm.init(authorization, option);
-			mMultiLineCardForm.init(authorization, null);
+			ClientConfiguration clientConfiguration =
+					ClientConfiguration.fromKeys("staging", "pk_XXXXXXXXXXXXXXXXXXXXXXXXXX", "MRT_XXXXXXXXXXXXXXXXXXXXXXXXXX");
+			FieldOptions option = new FieldOptions(new FieldConfiguration(DisplayConfiguration.REQUIRED),
+					new FieldConfiguration(DisplayConfiguration.REQUIRED));
+			mSingleLineCardForm.init(clientConfiguration, option);
+			mMultiLineCardForm.init(clientConfiguration, null);
 		} catch (InvalidArgumentException e) {
 			mInfoView.setText(e.getMessage());
 		}
@@ -114,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 			mInfoView.setText("");
 			mProgressBar.setVisibility(View.VISIBLE);
 
-			RefundRequest refundRequest = new RefundRequest("100");
+			RefundRequest refundRequest = new RefundRequest(100);
 			if (isMultiLine) {
 				mMultiLineCardForm.refund(refundRequest, paymentCallback);
 			} else {
@@ -143,11 +139,11 @@ public class MainActivity extends AppCompatActivity {
 			mInfoView.setText("");
 			mProgressBar.setVisibility(View.VISIBLE);
 
-			ChargeRequest paymentRequest = new ChargeRequest("100", true);
+			ChargeRequest chargeRequest = new ChargeRequest(100, true);
 			if (isMultiLine) {
-				mMultiLineCardForm.submit(paymentRequest, paymentCallback);
+				mMultiLineCardForm.charge(chargeRequest, paymentCallback);
 			} else {
-				mSingleLineCardForm.submit(paymentRequest, paymentCallback);
+				mSingleLineCardForm.charge(chargeRequest, paymentCallback);
 			}
 		});
 	}
