@@ -8,19 +8,24 @@
 package com.seamlesspay.demo;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.material.tabs.TabLayout;
+import com.seamlesspay.api.error.ApiError;
 import com.seamlesspay.api.exceptions.InvalidArgumentException;
 import com.seamlesspay.api.models.ClientConfiguration;
 import com.seamlesspay.example.R;
+import com.seamlesspay.ui.common.CardFormValidListener;
 import com.seamlesspay.ui.common.PaymentCallback;
 import com.seamlesspay.ui.common.TokenizeCallback;
 import com.seamlesspay.ui.models.ChargeRequest;
@@ -30,6 +35,14 @@ import com.seamlesspay.ui.models.FieldOptions;
 import com.seamlesspay.ui.models.PaymentResponse;
 import com.seamlesspay.ui.models.RefundRequest;
 import com.seamlesspay.ui.models.TokenizeResponse;
+import com.seamlesspay.ui.models.style.ColorPalette;
+import com.seamlesspay.ui.models.style.Colors;
+import com.seamlesspay.ui.models.style.ElevationLevel;
+import com.seamlesspay.ui.models.style.Shadow;
+import com.seamlesspay.ui.models.style.Shapes;
+import com.seamlesspay.ui.models.style.StyleOptions;
+import com.seamlesspay.ui.models.style.ThemeColors;
+import com.seamlesspay.ui.models.style.Typography;
 import com.seamlesspay.ui.paymentinputs.direct.MultiLineCardForm;
 import com.seamlesspay.ui.paymentinputs.direct.SingleLineCardForm;
 
@@ -50,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
 		@SuppressLint("SetTextI18n")
 		@Override
-		public void failure(@Nullable Exception exception) {
-			mInfoView.setText("Error\n" + exception.getMessage());
+		public void failure(@Nullable ApiError apiError) {
+			mInfoView.setText("Error\n" + apiError.getStatusDescription());
 			mProgressBar.setVisibility(View.GONE);
 		}
 	};
@@ -65,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
 		@SuppressLint("SetTextI18n")
 		@Override
-		public void failure(@Nullable Exception exception) {
-			mInfoView.setText("Error\n" + exception.getMessage());
+		public void failure(@Nullable ApiError apiError) {
+			mInfoView.setText("Error\n" + apiError.getStatusDescription());
 			mProgressBar.setVisibility(View.GONE);
 		}
 	};
@@ -83,17 +96,23 @@ public class MainActivity extends AppCompatActivity {
 		mProgressBar = findViewById(R.id.progress);
 		mTabLayout = findViewById(R.id.tabLayout);
 		mInfoView = findViewById(R.id.infoView);
-
 		mSingleLineCardForm = findViewById(R.id.cardSingleLine);
 		mMultiLineCardForm = findViewById(R.id.cardMultiLine);
-
 		try {
+			StyleOptions styleOptions = new StyleOptions(
+					new Colors(
+							new ColorPalette(new ThemeColors(Color.RED, Color.BLUE, Color.MAGENTA)),
+							new ColorPalette(new ThemeColors(Color.RED, Color.BLUE, Color.MAGENTA))
+					),
+					new Shapes(50F, new Shadow(ElevationLevel.Level1)),
+					new Typography(com.seamlesspay.R.font.roboto_regular, 1f)
+			);
 			ClientConfiguration clientConfiguration =
 					ClientConfiguration.fromKeys("staging", "pk_XXXXXXXXXXXXXXXXXXXXXXXXXX", "MRT_XXXXXXXXXXXXXXXXXXXXXXXXXX");
 			FieldOptions option = new FieldOptions(new FieldConfiguration(DisplayConfiguration.REQUIRED),
 					new FieldConfiguration(DisplayConfiguration.REQUIRED));
 			mSingleLineCardForm.init(clientConfiguration, option);
-			mMultiLineCardForm.init(clientConfiguration, null);
+			mMultiLineCardForm.init(clientConfiguration, null, null);
 		} catch (InvalidArgumentException e) {
 			mInfoView.setText(e.getMessage());
 		}
