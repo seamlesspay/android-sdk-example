@@ -38,6 +38,7 @@ import com.seamlesspay.ui.models.TokenizeResponse;
 import com.seamlesspay.ui.models.style.ColorPalette;
 import com.seamlesspay.ui.models.style.Colors;
 import com.seamlesspay.ui.models.style.ElevationLevel;
+import com.seamlesspay.ui.models.style.IconSet;
 import com.seamlesspay.ui.models.style.Shadow;
 import com.seamlesspay.ui.models.style.Shapes;
 import com.seamlesspay.ui.models.style.StyleOptions;
@@ -64,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
 		@SuppressLint("SetTextI18n")
 		@Override
 		public void failure(@Nullable ApiError apiError) {
-			mInfoView.setText("Error\n" + apiError.getStatusDescription());
+			if (apiError != null) {
+				mInfoView.setText("Error\n" + apiError.getStatusDescription());
+			}
 			mProgressBar.setVisibility(View.GONE);
 		}
 	};
@@ -79,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
 		@SuppressLint("SetTextI18n")
 		@Override
 		public void failure(@Nullable ApiError apiError) {
-			mInfoView.setText("Error\n" + apiError.getStatusDescription());
+			if (apiError != null) {
+				mInfoView.setText("Error\n" + apiError.getStatusDescription());
+			}
 			mProgressBar.setVisibility(View.GONE);
 		}
 	};
@@ -105,11 +110,12 @@ public class MainActivity extends AppCompatActivity {
 							new ColorPalette(new ThemeColors(Color.RED, Color.BLUE, Color.MAGENTA))
 					),
 					new Shapes(50F, new Shadow(ElevationLevel.Level1)),
-					new Typography(com.seamlesspay.R.font.roboto_regular, 1f)
+					new Typography(com.seamlesspay.R.font.roboto_regular, 1f),
+					IconSet.DARK
 			);
 			ClientConfiguration clientConfiguration =
 					ClientConfiguration.fromKeys("staging", "pk_XXXXXXXXXXXXXXXXXXXXXXXXXX", "MRT_XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			FieldOptions option = new FieldOptions(new FieldConfiguration(DisplayConfiguration.REQUIRED),
+			FieldOptions option = new FieldOptions(new FieldConfiguration(DisplayConfiguration.OPTIONAL),
 					new FieldConfiguration(DisplayConfiguration.REQUIRED));
 			mSingleLineCardForm.init(clientConfiguration, option);
 			mMultiLineCardForm.init(clientConfiguration, null, null);
