@@ -38,6 +38,8 @@ import com.seamlesspay.ui.models.TokenizeResponse;
 import com.seamlesspay.ui.models.style.ColorPalette;
 import com.seamlesspay.ui.models.style.Colors;
 import com.seamlesspay.ui.models.style.ElevationLevel;
+import com.seamlesspay.ui.models.style.FieldColor;
+import com.seamlesspay.ui.models.style.FieldColors;
 import com.seamlesspay.ui.models.style.IconSet;
 import com.seamlesspay.ui.models.style.Shadow;
 import com.seamlesspay.ui.models.style.Shapes;
@@ -104,17 +106,17 @@ public class MainActivity extends AppCompatActivity {
 		mSingleLineCardForm = findViewById(R.id.cardSingleLine);
 		mMultiLineCardForm = findViewById(R.id.cardMultiLine);
 		try {
-			StyleOptions styleOptions = new StyleOptions(
-					new Colors(
-							new ColorPalette(new ThemeColors(Color.RED, Color.BLUE, Color.MAGENTA)),
-							new ColorPalette(new ThemeColors(Color.RED, Color.BLUE, Color.MAGENTA))
-					),
-					new Shapes(50F, new Shadow(ElevationLevel.Level1)),
-					new Typography(com.seamlesspay.R.font.roboto_regular, 1f),
-					IconSet.DARK
-			);
+			StyleOptions styleOptions = new StyleOptions(new Colors(
+					new ColorPalette(new ThemeColors(Color.RED, Color.BLUE, Color.MAGENTA),
+							new FieldColors(null, null, null, null, null,
+									new FieldColor(Color.BLUE, Color.GREEN, Color.BLACK, Color.MAGENTA)), Color.GREEN,
+							Color.BLUE),
+					new ColorPalette(new ThemeColors(Color.RED, Color.BLUE, Color.MAGENTA), null, null,
+							null)), new Shapes(50F, new Shadow(ElevationLevel.Level2)),
+					new Typography(com.seamlesspay.R.font.roboto_regular, 1f), IconSet.DARK);
 			ClientConfiguration clientConfiguration =
-					ClientConfiguration.fromKeys("staging", "pk_XXXXXXXXXXXXXXXXXXXXXXXXXX", "MRT_XXXXXXXXXXXXXXXXXXXXXXXXXX");
+					ClientConfiguration.fromKeys("staging", "pk_XXXXXXXXXXXXXXXXXXXXXXXXXX",
+							"MRT_XXXXXXXXXXXXXXXXXXXXXXXXXX");
 			FieldOptions option = new FieldOptions(new FieldConfiguration(DisplayConfiguration.OPTIONAL),
 					new FieldConfiguration(DisplayConfiguration.REQUIRED));
 			mSingleLineCardForm.init(clientConfiguration, option);
