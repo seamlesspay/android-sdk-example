@@ -13,42 +13,14 @@
 			app:layout_behavior="@string/appbar_scrolling_view_behavior"
 			tools:context=".MainActivity"
 			>
-
-		<!--  ...  -->
-		<com.google.android.material.tabs.TabLayout
-				android:id="@+id/tabLayout"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				>
-			<com.google.android.material.tabs.TabItem
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="SingleLineForm"
-					/>
-			<com.google.android.material.tabs.TabItem
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="MutliLineForm"
-					/>
-		</com.google.android.material.tabs.TabLayout>
-		<com.seamlesspay.ui.paymentinputs.direct.SingleLineCardForm
-				android:id="@+id/cardSingleLine"
+		<com.seamlesspay.ui.paymentinputs.direct.CardForm
+				android:id="@+id/cardForm"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="16dp"
 				android:layout_marginEnd="24dp"
 				android:layout_marginStart="24dp"
 				android:layout_marginTop="32dp"
-				/>
-		<com.seamlesspay.ui.paymentinputs.direct.MultiLineCardForm
-				android:id="@+id/cardMultiLine"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginBottom="16dp"
-				android:layout_marginEnd="24dp"
-				android:layout_marginStart="24dp"
-				android:layout_marginTop="32dp"
-				android:visibility="gone"
 				/>
 		<Button
 				android:id="@+id/tokenizeButton"
@@ -99,7 +71,5 @@
 				android:layout_gravity="center_horizontal"
 				android:visibility="gone"
 				/>
-		<!--  ...  -->
-
 	</LinearLayout>
 </ScrollView>
