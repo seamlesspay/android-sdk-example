@@ -18,13 +18,21 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
     //implementation "com.seamlesspay:android:2.0.4"
+    implementation libs.androidx.annotation
+    implementation libs.androidx.appCompat
+    implementation libs.androidx.coreKtx
     implementation libs.material
+    implementation libs.androidx.navigationFragment
+    implementation libs.androidx.navigationUI
+    implementation libs.playServicesWallet
     implementation libs.kotlin.std
-    implementation libs.androidx.constraintLayout
-
     testImplementation libs.junit
 }

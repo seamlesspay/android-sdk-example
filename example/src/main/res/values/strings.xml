@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name" translatable="false">SeamlessPay SDK Examples</string>
+	<string name="app_name" translatable="false">SeamlessPay SDK Examples</string>
+	<string name="sdk_ui_title" translatable="false">SDK Examples</string>
+	<string name="dark_mode_title" translatable="false">Dark Mode</string>
+	<string name="light_mode_title" translatable="false">Light Mode</string>
+	<string name="ui_components_title">UI Components</string>
+	<string name="card_form_title">Card Form</string>
+	<string name="google_pay_button_title">Google Pay Button</string>
 </resources>

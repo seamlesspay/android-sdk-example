@@ -12,6 +12,11 @@ ext.versions = [
     androidxConstraintlayout    : '2.1.4',
     junit                       : '4.13.2',
     mockito                     : '4.0.0',
+    nexus                       : '2.0.0',
+    kotlinCoroutines            : '1.7.3',
+    playServicesWallet          : '19.4.0',
+    playServicesCoroutines      : '1.7.3',
+    navigation                  : '2.7.6'
 ]
 
 ext.buildLibs = [
@@ -19,19 +24,25 @@ ext.buildLibs = [
     mavenGradlePlugin           : "com.github.dcendents:android-maven-gradle-plugin:${versions.mavenGradlePlugin}",
     dokkaPlugin                 : "org.jetbrains.dokka:dokka-gradle-plugin:${versions.dokka}",
     kotlinGradlePlugin          : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+    nexusGradlePlugin           : "io.github.gradle-nexus.publish-plugin:${versions.nexus}",
 ]
 
 ext.libs = [
-    androidx                            : [
-        annotation        : "androidx.annotation:annotation:${versions.androidxAnnotation}",
-        appCompat         : "androidx.appcompat:appcompat:${versions.androidxAppcompat}",
-        constraintLayout  : "androidx.constraintlayout:constraintlayout:${versions.androidxConstraintlayout}",
-        coreKtx           : "androidx.core:core-ktx:${versions.androidxCore}",
-        fragment          : "androidx.fragment:fragment-ktx:${versions.androidxFragment}",
-        recyclerView      : "androidx.recyclerview:recyclerview:${versions.androidxRecyclerview}"
+    androidx                    : [
+        annotation                : "androidx.annotation:annotation:${versions.androidxAnnotation}",
+        navigationFragment        : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+        navigationUI              : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+        appCompat                 : "androidx.appcompat:appcompat:${versions.androidxAppcompat}",
+        constraintLayout          : "androidx.constraintlayout:constraintlayout:${versions.androidxConstraintlayout}",
+        coreKtx                   : "androidx.core:core-ktx:${versions.androidxCore}",
+        fragment                  : "androidx.fragment:fragment-ktx:${versions.androidxFragment}",
+        recyclerView              : "androidx.recyclerview:recyclerview:${versions.androidxRecyclerview}"
     ],
     kotlin                              : [
         std        : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
+        coroutines            : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}",
+        coroutinesAndroid     : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}",
+        coroutinesPlayServices: "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${versions.playServicesCoroutines}",
     ],
     mockito              : [
         android: "org.mockito:mockito-android:${versions.mockito}",
@@ -40,4 +51,5 @@ ext.libs = [
     material       : "com.google.android.material:material:${versions.material}",
     sentry         : "io.sentry:sentry:${versions.sentry}",
     junit          : "junit:junit:${versions.junit}",
+    playServicesWallet        : "com.google.android.gms:play-services-wallet:${versions.playServicesWallet}",
 ]

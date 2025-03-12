@@ -22,6 +22,6 @@
 
         <item name="colorOutline">@color/colorOutlineVariant</item>
 
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
     </style>
 </resources>
