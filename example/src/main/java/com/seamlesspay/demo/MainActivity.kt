@@ -24,9 +24,7 @@ import com.seamlesspay.ui.models.RefundRequest
 import com.seamlesspay.ui.models.TokenizeResponse
 import com.seamlesspay.ui.models.style.ColorPalette
 import com.seamlesspay.ui.models.style.Colors
-import com.seamlesspay.ui.models.style.ElevationLevel
 import com.seamlesspay.ui.models.style.FieldColors
-import com.seamlesspay.ui.models.style.Shadow
 import com.seamlesspay.ui.models.style.Shapes
 import com.seamlesspay.ui.models.style.StyleOptions
 import com.seamlesspay.ui.models.style.ThemeColors
@@ -141,7 +139,7 @@ class MainActivity : AppCompatActivity() {
             ThemeColors(Color.RED, Color.BLUE, Color.MAGENTA), null, null,
             null
           )
-        ), Shapes(50f, Shadow(ElevationLevel.Level2)),
+        ), Shapes(50f),
         Typography(com.seamlesspay.R.font.roboto_regular, 1f), null
       )
 
