@@ -6,4 +6,9 @@
 	<string name="ui_components_title">UI Components</string>
 	<string name="card_form_title">Card Form</string>
 	<string name="google_pay_button_title">Google Pay Button</string>
+	<string name="title_menu_close">Close</string>
+	<string name="google_pay_payment_canceled">Canceled by the user.</string>
+	<string name="google_pay_unavailable">Google Pay is not available at the moment</string>
+
+	<string name="amount_hint">Amount</string>
 </resources>

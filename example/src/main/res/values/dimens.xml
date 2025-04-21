@@ -38,4 +38,6 @@
 	<dimen name="margin_10x">80dp</dimen>
 	<dimen name="margin_11x">88dp</dimen>
 	<dimen name="margin_12x">96dp</dimen>
+
+	<dimen name="progress_indicator_size">48dp</dimen>
 </resources>

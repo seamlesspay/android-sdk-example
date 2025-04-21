@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.snackbar.Snackbar
+import com.seamlesspay.example.R
 
 abstract class BaseFragment<B : ViewBinding> : Fragment() {
 
@@ -49,4 +52,11 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
     _binding = null
   }
 
+  protected fun showSnackbar(parentView : View, @StringRes message: Int, @StringRes actionText: Int = R.string.title_menu_close) {
+    val snackbar = Snackbar.make(parentView, getString(message), Snackbar.LENGTH_LONG)
+    snackbar.setAction(actionText) {
+      snackbar.dismiss()
+    }
+    snackbar.show()
+  }
 }

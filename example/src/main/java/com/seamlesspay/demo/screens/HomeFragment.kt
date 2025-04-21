@@ -2,6 +2,7 @@ package com.seamlesspay.demo.screens
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.seamlesspay.demo.base.BaseFragment
 import com.seamlesspay.demo.util.forceDarkMode
 import com.seamlesspay.demo.util.isDarkMode
@@ -21,6 +22,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     switchDarkMode.setOnCheckedChangeListener { _, b ->
       forceDarkMode(b)
       updateSwitchTitle(b)
+    }
+
+    // Set up Controls
+
+    rowGooglePay.setOnClickListener {
+      findNavController().navigate(R.id.actionGooglePayFragment)
     }
   }
 

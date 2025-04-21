@@ -8,5 +8,19 @@
 			android:id="@+id/homeFragment"
 			android:name="com.seamlesspay.demo.screens.HomeFragment"
 			android:label="HomeFragment"
-			tools:layout="@layout/fragment_home"/>
+			tools:layout="@layout/fragment_home" />
+
+	<action
+			android:id="@+id/actionGooglePayFragment"
+			app:destination="@id/googlePayFragment"
+			app:enterAnim="@anim/nav_default_enter_anim"
+			app:exitAnim="@anim/nav_default_exit_anim"
+			app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+			app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+	<fragment
+			android:id="@+id/googlePayFragment"
+			android:name="com.seamlesspay.demo.screens.GooglePayFragment"
+			android:label="HomeFragment"
+			tools:layout="@layout/fragment_google_pay" />
 </navigation>
