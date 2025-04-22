@@ -4,11 +4,17 @@
 	<string name="dark_mode_title" translatable="false">Dark Mode</string>
 	<string name="light_mode_title" translatable="false">Light Mode</string>
 	<string name="ui_components_title">UI Components</string>
+	<string name="payment_options_title">Payment Options</string>
 	<string name="card_form_title">Card Form</string>
 	<string name="google_pay_button_title">Google Pay Button</string>
 	<string name="title_menu_close">Close</string>
 	<string name="google_pay_payment_canceled">Canceled by the user.</string>
 	<string name="google_pay_unavailable">Google Pay is not available at the moment</string>
 
+	<string name="tokenize_only_title">Tokenize-only</string>
+	<string name="charge_title">Charge</string>
+	<string name="refund_title">Refund</string>
+
 	<string name="amount_hint">Amount</string>
+	<string name="continue_title">Continue</string>
 </resources>

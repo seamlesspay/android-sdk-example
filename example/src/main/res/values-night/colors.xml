@@ -10,8 +10,8 @@
     <color name="colorOnSurfaceVariant">#2D2A2F</color>
     <color name="colorOutline">#79747E</color>
     <color name="colorOutlineVariant">#E6E0E9</color>
-    <color name="colorPrimary">#65558F</color>
-    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorPrimary">#D0BCFE</color>
+    <color name="colorOnPrimary">#000000</color>
 
     <color name="colorSecondary">#03DAC6</color>
     <color name="colorOnSecondary">#000000</color>

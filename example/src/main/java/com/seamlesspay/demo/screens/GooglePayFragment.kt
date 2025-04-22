@@ -56,7 +56,7 @@ class GooglePayFragment : BaseFragment<FragmentGooglePayBinding>() {
       initializePayment()
     }
 
-    // Set up Toolbar
+    // Set Up Toolbar
 
     topAppBar.setNavigationOnClickListener {
       findNavController().popBackStack()

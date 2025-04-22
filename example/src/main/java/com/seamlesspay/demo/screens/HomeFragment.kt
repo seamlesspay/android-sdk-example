@@ -29,6 +29,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     rowGooglePay.setOnClickListener {
       findNavController().navigate(R.id.actionGooglePayFragment)
     }
+
+    rowCardForm.setOnClickListener {
+      findNavController().navigate(R.id.actionTransactionSelectionFragment)
+    }
   }
 
   private fun updateSwitchTitle(darkMode: Boolean) {
