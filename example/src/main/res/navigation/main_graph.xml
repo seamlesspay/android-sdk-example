@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
-		app:startDestination="@id/homeFragment">
+		app:startDestination="@id/homeFragment"
+		android:id="@+id/main">
 
 	<fragment
 			android:id="@+id/homeFragment"
@@ -35,6 +36,27 @@
 	<fragment
 			android:id="@+id/transactionSelectionFragment"
 			android:name="com.seamlesspay.demo.screens.TransactionSelectionFragment"
-			tools:layout="@layout/fragment_transaction_selection"
-			android:label="TransactionSelectionFragment" />
+			android:label="TransactionSelectionFragment"
+			tools:layout="@layout/fragment_transaction_selection" />
+
+	<action
+			android:id="@+id/actionCardFormFragment"
+			app:destination="@id/cardFormFragment"
+			app:enterAnim="@anim/nav_default_enter_anim"
+			app:exitAnim="@anim/nav_default_exit_anim"
+			app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+			app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+	<fragment
+			android:id="@+id/cardFormFragment"
+			android:name="com.seamlesspay.demo.screens.CardFormFragment"
+			android:label="CardFormFragment"
+			tools:layout="@layout/fragment_card_form">
+		<argument
+				android:name="transactionInfo"
+				app:argType="com.seamlesspay.demo.model.TransactionInfo"
+				app:nullable="false" />
+	</fragment>
+
+
 </navigation>

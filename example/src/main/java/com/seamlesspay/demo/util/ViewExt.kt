@@ -20,6 +20,7 @@ fun ViewGroup.setupSingleSelectionRadioButtons(validate: () -> Unit) {
       }
     }
   }
+  validate()
 }
 
 // Helper function to recursively find the first MaterialRadioButton in a view tree

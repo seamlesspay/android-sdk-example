@@ -9,6 +9,7 @@ buildscript {
         classpath buildLibs.mavenGradlePlugin
         classpath buildLibs.kotlinGradlePlugin
         classpath buildLibs.dokkaPlugin
+        classpath buildLibs.navigationPlugin
     }
 }
 

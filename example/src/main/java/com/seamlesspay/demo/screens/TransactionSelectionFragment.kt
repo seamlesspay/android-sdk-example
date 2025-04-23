@@ -2,6 +2,7 @@ package com.seamlesspay.demo.screens
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.seamlesspay.demo.base.BaseFragment
@@ -15,11 +16,19 @@ import com.seamlesspay.example.R
 import com.seamlesspay.example.databinding.FragmentTransactionSelectionBinding
 
 class TransactionSelectionFragment : BaseFragment<FragmentTransactionSelectionBinding>() {
+  private var transactionType = TransactionType.Tokenize
+
   override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentTransactionSelectionBinding
     get() = FragmentTransactionSelectionBinding::inflate
 
   override fun FragmentTransactionSelectionBinding.initViews() {
     // Set Up Controls
+
+    when(transactionType) {
+      TransactionType.Tokenize -> rbTokenize.isChecked = true
+      TransactionType.Charge -> rbCharge.isChecked = true
+      TransactionType.Refund -> rbRefund.isChecked = true
+    }
 
     llTransactionType.setupSingleSelectionRadioButtons {
       validate()
@@ -27,17 +36,15 @@ class TransactionSelectionFragment : BaseFragment<FragmentTransactionSelectionBi
 
     btnContinue.setOnClickListener {
       etAmount.hideKeyboard()
-      val transactionType = when {
-        rbTokenize.isChecked -> TransactionType.Tokenize
-        rbCharge.isChecked -> TransactionType.Charge
-        else -> TransactionType.Refund
-      }
       val transactionInfo = TransactionInfo(
         transactionType = transactionType,
         amount = etAmount.getSubunitValue()
       )
 
-      // TODO navigate to card form view with collected data
+      findNavController().navigate(
+        R.id.actionCardFormFragment,
+        bundleOf("transactionInfo" to transactionInfo)
+      )
     }
 
     // Set Up Toolbar
@@ -63,7 +70,11 @@ class TransactionSelectionFragment : BaseFragment<FragmentTransactionSelectionBi
   }
 
   private fun validate() {
-    binding.tiAmount.isVisible = !binding.rbTokenize.isChecked
-    binding.etAmount.text?.clear()
+    transactionType = when {
+      binding.rbCharge.isChecked -> TransactionType.Charge
+      binding.rbRefund.isChecked -> TransactionType.Refund
+      else -> TransactionType.Tokenize
+    }
+    binding.tiAmount.isVisible = transactionType != TransactionType.Tokenize
   }
 }

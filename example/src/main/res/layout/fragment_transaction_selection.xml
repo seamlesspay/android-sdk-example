@@ -17,7 +17,7 @@
 			app:menu="@menu/toolbar_menu"
 			app:navigationIcon="@drawable/ic_arrow_back"
 			app:navigationIconTint="@color/colorOnSurface"
-			app:title="@string/google_pay_button_title"
+			app:title="@string/card_form_title"
 			app:titleTextColor="@color/colorOnSurface"
 			/>
 	<ScrollView
@@ -82,7 +82,6 @@
 							android:id="@+id/rbTokenize"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:checked="true"
 							android:clickable="false"
 							android:focusable="false"
 							/>

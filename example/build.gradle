@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
 version "1.0.1"
 
 android {
@@ -25,7 +27,7 @@ android {
 }
 
 dependencies {
-    //implementation "com.seamlesspay:android:2.0.4"x
+    //implementation "com.seamlesspay:android:2.0.4"
     implementation libs.androidx.annotation
     implementation libs.androidx.appCompat
     implementation libs.androidx.coreKtx
