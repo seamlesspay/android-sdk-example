@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ======================================== -->
+	<!--              App Defaults                -->
+	<!-- ======================================== -->
+
+	<dimen name="margin_0x125">1dp</dimen>
+	<dimen name="margin_0x25">2dp</dimen>
+	<dimen name="margin_0x4">3dp</dimen>
+	<dimen name="margin_0x5">4dp</dimen>
+	<dimen name="margin_0x6">5dp</dimen>
+	<dimen name="margin_0x8">6dp</dimen>
+	<dimen name="margin_1x">8dp</dimen>
+	<dimen name="margin_1x2">10dp</dimen>
+	<dimen name="margin_1x5">12dp</dimen>
+	<dimen name="margin_1x75">14dp</dimen>
+	<dimen name="margin_2x">16dp</dimen>
+	<dimen name="margin_2x0">17dp</dimen>
+	<dimen name="margin_2x1">18dp</dimen>
+	<dimen name="margin_2x5">20dp</dimen>
+	<dimen name="margin_2x75">22dp</dimen>
+	<dimen name="margin_3x">24dp</dimen>
+	<dimen name="margin_3x1">25dp</dimen>
+	<dimen name="margin_3x3">26dp</dimen>
+	<dimen name="margin_3x5">28dp</dimen>
+	<dimen name="margin_3x6">29dp</dimen>
+	<dimen name="margin_3x8">30dp</dimen>
+	<dimen name="margin_4x">32dp</dimen>
+	<dimen name="margin_4x5">36dp</dimen>
+	<dimen name="margin_5x">40dp</dimen>
+	<dimen name="margin_6x">48dp</dimen>
+	<dimen name="margin_6x5">52dp</dimen>
+	<dimen name="margin_7x">56dp</dimen>
+	<dimen name="margin_7x5">60dp</dimen>
+	<dimen name="margin_8x">64dp</dimen>
+	<dimen name="margin_8x5">68dp</dimen>
+	<dimen name="margin_9x">72dp</dimen>
+	<dimen name="margin_10x">80dp</dimen>
+	<dimen name="margin_11x">88dp</dimen>
+	<dimen name="margin_12x">96dp</dimen>
+
+	<dimen name="progress_indicator_size">48dp</dimen>
+</resources>

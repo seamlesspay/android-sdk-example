@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#2296F3</color>
-    <color name="backgroundColor">#2A2A2A</color>
-    <color name="onBackgroundColor">#FFFFFF</color>
+    <color name="colorBackground">#141218</color>
+    <color name="colorOnBackground">#6E6A78</color>
+
+    <color name="colorPrimaryVariant">#141218</color>
+    <color name="colorSurface">#1C1C1C</color>
+    <color name="colorSurfaceContainer">#E6E0E9</color>
+    <color name="colorOnSurface">#E6E0E9</color>
+    <color name="colorOnSurfaceVariant">#2D2A2F</color>
+    <color name="colorOutline">#79747E</color>
+    <color name="colorOutlineVariant">#E6E0E9</color>
+    <color name="colorPrimary">#D0BCFE</color>
+    <color name="colorOnPrimary">#000000</color>
+
+    <color name="colorSecondary">#03DAC6</color>
+    <color name="colorOnSecondary">#000000</color>
 </resources>
+
+
