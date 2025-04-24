@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.wallet.button.ButtonConstants
@@ -16,9 +17,12 @@ import com.seamlesspay.api.models.ClientConfiguration
 import com.seamlesspay.api.utils.GooglePayJsonHelper
 import com.seamlesspay.demo.base.BaseFragment
 import com.seamlesspay.demo.config.GlobalConfiguration.clientConfiguration
+import com.seamlesspay.demo.model.ResultInfo
+import com.seamlesspay.demo.model.ResultType
 import com.seamlesspay.demo.util.getSubunitValue
 import com.seamlesspay.demo.util.hideKeyboard
 import com.seamlesspay.demo.util.setupCurrencyInput
+import com.seamlesspay.demo.util.toFancyString
 import com.seamlesspay.example.R
 import com.seamlesspay.example.databinding.FragmentGooglePayBinding
 import com.seamlesspay.ui.common.GooglePayCallback
@@ -39,6 +43,11 @@ class GooglePayFragment : BaseFragment<FragmentGooglePayBinding>() {
 
   override fun FragmentGooglePayBinding.initViews() {
     // Set up Google Pay Button
+
+    if (googlePyaHandler.isReadyToPay()) {
+      piGooglePay.isVisible = false
+        payButton.isVisible = true
+    }
 
     payButton.initialize(
       ButtonOptions
@@ -97,12 +106,12 @@ class GooglePayFragment : BaseFragment<FragmentGooglePayBinding>() {
     googlePyaHandler.presentGooglePayFor(
       ChargeRequest(amount = binding.etAmount.getSubunitValue()),
       object : GooglePayCallback {
-        override fun success(tokenizeResponse: PaymentResponse) {
-          // TODO handle success with result screen
+        override fun success(paymentResponse: PaymentResponse) {
+          navigateNext(paymentResponse.toFancyString(), ResultType.Success)
         }
 
         override fun failure(apiError: ApiError?) {
-          // TODO handle error with result screen
+          navigateNext(apiError.toFancyString(), ResultType.Error)
         }
 
         override fun cancel() {
@@ -111,4 +120,14 @@ class GooglePayFragment : BaseFragment<FragmentGooglePayBinding>() {
       })
   }
 
+  private fun navigateNext(result: String, resultType: ResultType) {
+    findNavController().navigate(
+      R.id.actionResultFragment, bundleOf(
+        "resultInfo" to ResultInfo(
+          resultType = resultType,
+          result = result
+        )
+      )
+    )
+  }
 }

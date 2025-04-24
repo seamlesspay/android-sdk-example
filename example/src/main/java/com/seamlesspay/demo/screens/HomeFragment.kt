@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.seamlesspay.demo.base.BaseFragment
+import com.seamlesspay.demo.util.buildDebugInfo
 import com.seamlesspay.demo.util.forceDarkMode
 import com.seamlesspay.demo.util.isDarkMode
 import com.seamlesspay.example.R
@@ -33,6 +34,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     rowCardForm.setOnClickListener {
       findNavController().navigate(R.id.actionTransactionSelectionFragment)
     }
+
+    //tvAppData.text = buildDebugInfo(requireContext(), "2.2.5-rc1")
   }
 
   private fun updateSwitchTitle(darkMode: Boolean) {

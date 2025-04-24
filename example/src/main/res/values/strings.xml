@@ -20,4 +20,8 @@
 
 	<string name="charge_amount_title">You are about to charge %s</string>
 	<string name="refund_amount_title">You are about to refund %s</string>
+	<string name="error_title">Error</string>
+	<string name="success_title">Success</string>
+	<string name="response_code_title">Response Code</string>
+	<string name="copy_response_title">Copy Response</string>
 </resources>

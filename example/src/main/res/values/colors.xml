@@ -18,6 +18,10 @@
     <color name="colorOnSecondary">#000000</color>
 
     <color name="colorBlack32">#52000000</color>
+
+    <color name="success">#2FA42D</color>
+    <color name="error">#B3261E</color>
+    <color name="white">#ffffff</color>
 </resources>
 
 
