@@ -19,7 +19,8 @@
 	<!-- Content inside a ScrollView -->
 	<ScrollView
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1"
 			app:layout_behavior="@string/appbar_scrolling_view_behavior"
 			>
 
@@ -135,4 +136,12 @@
 
 		</LinearLayout>
 	</ScrollView>
+	<com.google.android.material.textview.MaterialTextView
+			android:id="@+id/tvAppData"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/colorOnSurface"
+			android:layout_margin="@dimen/margin_2x"
+			style="@style/TextAppearance.MaterialComponents.Subtitle1"
+			/>
 </LinearLayout>
