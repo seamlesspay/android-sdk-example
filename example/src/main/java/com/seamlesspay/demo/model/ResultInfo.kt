@@ -6,5 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ResultInfo(
   val resultType: ResultType,
-  val result: String
+  val result: String,
+  val paymentType: PaymentType = PaymentType.Form
 ) : Parcelable
