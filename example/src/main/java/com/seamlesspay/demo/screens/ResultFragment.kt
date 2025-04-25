@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.seamlesspay.demo.base.BaseFragment
+import com.seamlesspay.demo.model.PaymentType
 import com.seamlesspay.demo.model.ResultType
 import com.seamlesspay.demo.util.copyToClipboard
 import com.seamlesspay.example.R
@@ -23,6 +24,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
     when (navArgs.resultInfo.resultType) {
       ResultType.Success -> tvSuccess.isVisible = true
       ResultType.Error -> tvError.isVisible = true
+    }
+
+    topAppBar.title = when(navArgs.resultInfo.paymentType) {
+      PaymentType.Form -> getString(R.string.card_form_title)
+      PaymentType.Button -> getString(R.string.google_pay_button_title)
     }
 
     tvContent.text = navArgs.resultInfo.result

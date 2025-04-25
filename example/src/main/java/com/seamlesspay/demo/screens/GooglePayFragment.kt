@@ -17,6 +17,7 @@ import com.seamlesspay.api.models.ClientConfiguration
 import com.seamlesspay.api.utils.GooglePayJsonHelper
 import com.seamlesspay.demo.base.BaseFragment
 import com.seamlesspay.demo.config.GlobalConfiguration.clientConfiguration
+import com.seamlesspay.demo.model.PaymentType
 import com.seamlesspay.demo.model.ResultInfo
 import com.seamlesspay.demo.model.ResultType
 import com.seamlesspay.demo.util.getSubunitValue
@@ -125,7 +126,8 @@ class GooglePayFragment : BaseFragment<FragmentGooglePayBinding>() {
       R.id.actionResultFragment, bundleOf(
         "resultInfo" to ResultInfo(
           resultType = resultType,
-          result = result
+          result = result,
+          paymentType = PaymentType.Button
         )
       )
     )
