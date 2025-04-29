@@ -17,8 +17,8 @@ object GlobalConfiguration {
   val clientConfiguration: ClientConfiguration by lazy {
     ClientConfiguration.fromKeys(
       /* environment = */ "staging",
-      /* secretKey = */ "sk_XXXXXXXXXXXXXXXXXXXXXX",
-      /* proxyAccountId = */ "MRT_XXXXXXXXXXXXXXXXXXXXXX"
+      /* secretKey = */ "sk_01JPHPZRS2J1J1XJ73YP0CRBMV",
+      /* proxyAccountId = */ null
     )
   }
 }
