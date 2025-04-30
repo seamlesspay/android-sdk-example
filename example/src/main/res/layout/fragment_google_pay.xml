@@ -14,7 +14,6 @@
 			android:background="@color/colorPrimaryVariant"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			app:menu="@menu/toolbar_menu"
 			app:navigationIcon="@drawable/ic_arrow_back"
 			app:navigationIconTint="@color/colorOnSurface"
 			app:title="@string/google_pay_button_title"
@@ -78,9 +77,4 @@
 				android:visibility="gone"
 				/>
 	</FrameLayout>
-	<include
-			layout="@layout/layout_progress"
-			android:id="@+id/layoutProgress"
-			android:visibility="gone"
-			/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.wallet.button.ButtonConstants
 import com.google.android.gms.wallet.button.ButtonConstants.ButtonTheme.DARK
+import com.google.android.gms.wallet.button.ButtonConstants.ButtonTheme.LIGHT
 import com.google.android.gms.wallet.button.ButtonConstants.ButtonType.PAY
 import com.google.android.gms.wallet.button.ButtonOptions
 import com.seamlesspay.api.error.ApiError
@@ -22,6 +23,7 @@ import com.seamlesspay.demo.model.ResultInfo
 import com.seamlesspay.demo.model.ResultType
 import com.seamlesspay.demo.util.getSubunitValue
 import com.seamlesspay.demo.util.hideKeyboard
+import com.seamlesspay.demo.util.isDarkMode
 import com.seamlesspay.demo.util.setupCurrencyInput
 import com.seamlesspay.demo.util.toFancyString
 import com.seamlesspay.example.R
@@ -53,6 +55,7 @@ class GooglePayFragment : BaseFragment<FragmentGooglePayBinding>() {
     payButton.initialize(
       ButtonOptions
         .newBuilder()
+        .setButtonTheme(if (requireContext().isDarkMode()) LIGHT else DARK)
         .setButtonType(PAY)
         .setAllowedPaymentMethods(
           JSONArray().put(GooglePayJsonHelper.createCardPaymentMethod(isForPaymentDataRequest = false))
@@ -72,21 +75,14 @@ class GooglePayFragment : BaseFragment<FragmentGooglePayBinding>() {
       findNavController().popBackStack()
     }
 
-    topAppBar.setOnMenuItemClickListener {
-      when (it.itemId) {
-        R.id.action_close -> {
-          findNavController().popBackStack(R.id.homeFragment, false)
-          true
-        }
-
-        else -> false
-      }
-    }
-
     // Set Up Controls
 
-    googlePyaHandler.setProcessingCallback {
-      layoutProgress.root.isVisible = it
+    googlePyaHandler.setProcessingCallback { progress ->
+      if (progress) {
+        showFullScreenProgress()
+      } else {
+        hideFullScreenProgress()
+      }
     }
     googlePyaHandler.setIsReadyToPayCallback { isReadyToPay ->
       piGooglePay.isVisible = false

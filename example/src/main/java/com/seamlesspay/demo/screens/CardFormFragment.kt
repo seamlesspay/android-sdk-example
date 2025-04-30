@@ -84,6 +84,8 @@ class CardFormFragment : BaseFragment<FragmentCardFormBinding>() {
       performTransaction()
     }
 
+    btnContinue.isEnabled = cardForm.isValid()
+
     // Set Up Toolbar
 
     topAppBar.setNavigationOnClickListener {
@@ -139,9 +141,13 @@ class CardFormFragment : BaseFragment<FragmentCardFormBinding>() {
     //Init card form with you custom configurations
     cardForm.init(clientConfiguration, fieldOptions)
 
+    cardForm.setOnCardFormValidListener { isValid ->
+      btnContinue.isEnabled = isValid
+    }
+
     // Set Up Title
     when (transactionType) {
-      TransactionType.Tokenize -> tvAmount.isVisible = false
+      TransactionType.Tokenize -> tvAmount.text = getString(R.string.tokenize_amount_title)
       TransactionType.Charge -> tvAmount.text =
         getString(R.string.charge_amount_title, amount.toCurrencyString())
 
@@ -167,11 +173,11 @@ class CardFormFragment : BaseFragment<FragmentCardFormBinding>() {
   }
 
   private fun hideProgressBar() {
-    binding.layoutProgress.root.isVisible = false
+    hideFullScreenProgress()
   }
 
   private fun showProgressBar() {
-    binding.layoutProgress.root.isVisible = true
+    showFullScreenProgress()
   }
 
   private fun navigateNext(result: String, resultType: ResultType) {

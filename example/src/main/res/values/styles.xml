@@ -1,27 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Primary brand color -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+		<!-- Primary brand color -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorOnPrimary">@color/colorOnPrimary</item>
 
-        <!-- Secondary brand color -->
-        <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+		<!-- Secondary brand color -->
+		<item name="colorSecondary">@color/colorSecondary</item>
+		<item name="colorOnSecondary">@color/colorOnSecondary</item>
 
-        <!-- Background/surface colors -->
-        <item name="android:colorBackground">@color/colorBackground</item>
-        <item name="colorOnBackground">@color/colorOnBackground</item>
-        <item name="colorSurface">@color/colorSurface</item>
-        <item name="colorOnSurface">@color/colorOutline</item>
+		<!-- Background/surface colors -->
+		<item name="android:colorBackground">@color/colorBackground</item>
+		<item name="colorOnBackground">@color/colorOnBackground</item>
+		<item name="colorSurface">@color/colorSurface</item>
+		<item name="colorOnSurface">@color/colorOutline</item>
 
-        <!-- Status bar, navigation bar, etc. -->
-        <item name="android:statusBarColor">@color/colorPrimaryVariant</item>
-        <item name="android:navigationBarColor">@color/colorPrimaryVariant</item>
+		<!-- Status bar, navigation bar, etc. -->
+		<item name="android:statusBarColor">@color/colorPrimaryVariant</item>
+		<item name="android:navigationBarColor">@color/colorPrimaryVariant</item>
 
-        <item name="colorOutline">@color/colorOutlineVariant</item>
+		<item name="colorOutline">@color/colorOutlineVariant</item>
 
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-    </style>
+		<item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+	</style>
 </resources>

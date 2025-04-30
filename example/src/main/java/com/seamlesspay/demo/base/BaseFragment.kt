@@ -1,11 +1,17 @@
 package com.seamlesspay.demo.base
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import androidx.annotation.CallSuper
 import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
@@ -50,6 +56,39 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
     super.onDestroyView()
     binding.destroyViews()
     _binding = null
+  }
+
+  private var progressDialog: Dialog? = null
+
+  protected fun showFullScreenProgress() {
+    if (progressDialog?.isShowing == true) return
+
+    progressDialog = Dialog(requireContext()).apply {
+      requestWindowFeature(Window.FEATURE_NO_TITLE)
+      setContentView(R.layout.layout_progress)
+      setCancelable(false)
+
+      window?.let { win ->
+        win.setLayout(
+          ViewGroup.LayoutParams.MATCH_PARENT,
+          ViewGroup.LayoutParams.MATCH_PARENT
+        )
+
+        win.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+
+        win.setBackgroundDrawable(
+          ColorDrawable(
+            Color.TRANSPARENT
+          )
+        )
+      }
+      show()
+    }
+  }
+
+  protected fun hideFullScreenProgress() {
+    progressDialog?.dismiss()
+    progressDialog = null
   }
 
   protected fun showSnackbar(parentView : View, @StringRes message: Int, @StringRes actionText: Int = R.string.title_menu_close) {
