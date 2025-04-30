@@ -14,7 +14,6 @@
 			android:background="@color/colorPrimaryVariant"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			app:menu="@menu/toolbar_menu"
 			app:navigationIcon="@drawable/ic_arrow_back"
 			app:navigationIconTint="@color/colorOnSurface"
 			app:title="@string/card_form_title"

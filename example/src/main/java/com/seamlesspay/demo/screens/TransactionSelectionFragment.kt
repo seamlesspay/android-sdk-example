@@ -53,17 +53,6 @@ class TransactionSelectionFragment : BaseFragment<FragmentTransactionSelectionBi
       findNavController().popBackStack()
     }
 
-    topAppBar.setOnMenuItemClickListener {
-      when (it.itemId) {
-        R.id.action_close -> {
-          findNavController().popBackStack(R.id.homeFragment, false)
-          true
-        }
-
-        else -> false
-      }
-    }
-
     // Set Up Edit Text
 
     etAmount.setupCurrencyInput()

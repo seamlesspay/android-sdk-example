@@ -75,17 +75,6 @@ class GooglePayFragment : BaseFragment<FragmentGooglePayBinding>() {
       findNavController().popBackStack()
     }
 
-    topAppBar.setOnMenuItemClickListener {
-      when (it.itemId) {
-        R.id.action_close -> {
-          findNavController().popBackStack(R.id.homeFragment, false)
-          true
-        }
-
-        else -> false
-      }
-    }
-
     // Set Up Controls
 
     googlePyaHandler.setProcessingCallback { progress ->
