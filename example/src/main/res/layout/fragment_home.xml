@@ -57,6 +57,38 @@
 						/>
 			</LinearLayout>
 
+			<!-- Diagnostic Info Row -->
+			<LinearLayout
+				android:id="@+id/rowDiagnosticInfo"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/colorOnSurfaceVariant"
+				android:clickable="true"
+				android:focusable="true"
+				android:foreground="?attr/selectableItemBackground"
+				android:orientation="horizontal"
+				android:padding="@dimen/margin_2x"
+				>
+
+				<com.google.android.material.textview.MaterialTextView
+					android:id="@+id/textDiagnosticInfo"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:textColor="@color/colorOnSurface"
+					android:text="@string/diagnostic_info_title"
+					style="@style/TextAppearance.MaterialComponents.Subtitle1"
+					/>
+
+				<ImageView
+					android:id="@+id/iconDiagnosticInfo"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:tint="@color/colorOnSurface"
+					android:importantForAccessibility="no"
+					android:src="@drawable/arrow_right"
+					/>
+			</LinearLayout>
 			<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/textUIComponents"
 					android:layout_width="wrap_content"
@@ -137,12 +169,4 @@
 
 		</LinearLayout>
 	</ScrollView>
-	<com.google.android.material.textview.MaterialTextView
-			android:id="@+id/tvAppData"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:textColor="@color/colorOnSurface"
-			android:layout_margin="@dimen/margin_2x"
-			style="@style/TextAppearance.MaterialComponents.Subtitle1"
-			/>
 </LinearLayout>

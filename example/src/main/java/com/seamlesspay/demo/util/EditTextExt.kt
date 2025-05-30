@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import java.util.Locale
 
 /**
  * Extension function for [EditText] to automatically format user input as currency.
@@ -30,7 +31,7 @@ fun EditText.setupCurrencyInput() {
 
         val cleanString = s.toString().replace("[^\\d]".toRegex(), "")
         val parsed = if (cleanString.isNotEmpty()) cleanString.toLong() else 0L
-        val formatted = "%.2f".format(parsed / 100.0)
+        val formatted = "%.2f".format(Locale.US,parsed / 100.0)
 
         currentText = formatted
         this@setupCurrencyInput.setText(formatted)

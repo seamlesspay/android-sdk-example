@@ -5,8 +5,10 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.os.Build
 import com.seamlesspay.demo.config.GlobalConfiguration.clientConfiguration
+import com.seamlesspay.example.BuildConfig
+import com.seamlesspay.example.R
 
-fun buildDebugInfo(context: Context, sdkVersion: String): String {
+fun buildDebugInfo(context: Context): List<Pair<String, String>> {
   val packageManager = context.packageManager
   val packageName = context.packageName
   val packageInfo = packageManager.getPackageInfo(packageName, 0)
@@ -30,18 +32,28 @@ fun buildDebugInfo(context: Context, sdkVersion: String): String {
   val screenDensity = displayMetrics.densityDpi
   val screenSize = "${screenWidth}x$screenHeight @${screenDensity}dpi"
 
-  return buildString {
-    appendLine("Environment: ${clientConfiguration.environment}")
-    appendLine("Client Secret: ${clientConfiguration.bearer}")
+  return buildList {
+    add(context.getString(R.string.diagnostic_environment) to clientConfiguration.environment)
+    add(context.getString(R.string.diagnostic_client_secret) to clientConfiguration.bearer.maskMiddle())
     clientConfiguration.proxyAccountId?.let {
-      appendLine("Proxy Account Id: $it")
+      add(context.getString(R.string.diagnostic_proxy_account_id) to it.maskMiddle())
     }
-    appendLine("App Version: $appVersion")
-    appendLine("Build Number: $buildNumber")
-    appendLine("SDK Version: $sdkVersion")
-    appendLine("OS Version: $osVersion")
-    appendLine("Device Model: $deviceModel")
-    appendLine("Screen Size: $screenSize")
+    add(context.getString(R.string.diagnostic_app_version) to appVersion)
+    add(context.getString(R.string.diagnostic_build_number) to buildNumber.toString())
+    add(context.getString(R.string.diagnostic_sdk_version) to BuildConfig.SDK_VERSION)
+    add(context.getString(R.string.diagnostic_os_version) to osVersion)
+    add(context.getString(R.string.diagnostic_device_model) to deviceModel)
+    add(context.getString(R.string.diagnostic_screen_size) to screenSize)
+  }
+}
+
+fun String.maskMiddle(): String {
+  return if (this.length >= 11) {
+    val start = this.take(7)
+    val end = this.takeLast(4)
+    "$start****$end"
+  } else {
+    this
   }
 }
 
