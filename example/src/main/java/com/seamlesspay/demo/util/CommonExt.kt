@@ -35,8 +35,11 @@ fun buildDebugInfo(context: Context): List<Pair<String, String>> {
   return buildList {
     add(context.getString(R.string.diagnostic_environment) to clientConfiguration.environment)
     add(context.getString(R.string.diagnostic_client_secret) to clientConfiguration.bearer.maskMiddle())
-    clientConfiguration.proxyAccountId?.let {
-      add(context.getString(R.string.diagnostic_proxy_account_id) to it.maskMiddle())
+    val accountId = clientConfiguration.proxyAccountId
+    if (accountId != null) {
+      add(context.getString(R.string.diagnostic_proxy_account_id) to clientConfiguration.proxyAccountId.maskMiddle())
+    } else {
+      add(context.getString(R.string.diagnostic_proxy_account_id) to "null")
     }
     add(context.getString(R.string.diagnostic_app_version) to appVersion)
     add(context.getString(R.string.diagnostic_build_number) to buildNumber.toString())
