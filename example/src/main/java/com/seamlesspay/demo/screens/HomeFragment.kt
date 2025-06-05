@@ -31,6 +31,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
       findNavController().navigate(R.id.actionTransactionSelectionFragment)
     }
 
-    //tvAppData.text = buildDebugInfo(requireContext(), "2.2.5-rc1")
+    rowDiagnosticInfo.setOnClickListener {
+      findNavController().navigate(R.id.actionDiagnosticInfoFragment)
+    }
   }
 }

@@ -40,4 +40,5 @@
 	<dimen name="margin_12x">96dp</dimen>
 
 	<dimen name="progress_indicator_size">48dp</dimen>
+    <dimen name="_120dp">120dp</dimen>
 </resources>

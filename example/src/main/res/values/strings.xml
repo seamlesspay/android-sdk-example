@@ -24,4 +24,18 @@
 	<string name="success_title">Success</string>
 	<string name="response_code_title">Response Code</string>
 	<string name="copy_response_title">Copy Response</string>
+
+	<!-- Diagnostic info screen -->
+
+	<string name="diagnostic_info_title">Diagnostic Info</string>
+	<string name="diagnostic_environment">Environment</string>
+	<string name="diagnostic_client_secret">Client Secret</string>
+	<string name="diagnostic_proxy_account_id">Proxy Account</string>
+	<string name="diagnostic_app_version">App Version</string>
+	<string name="diagnostic_build_number">Build Number</string>
+	<string name="diagnostic_sdk_version">SDK Version</string>
+	<string name="diagnostic_os_version">OS Version</string>
+	<string name="diagnostic_device_model">Device Model</string>
+	<string name="diagnostic_screen_size">Screen Size</string>
+	<string name="copy_info_title">Copy Info</string>
 </resources>

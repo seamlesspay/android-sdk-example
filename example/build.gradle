@@ -5,6 +5,10 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 version "1.0.1"
 
+ext {
+    sdkVersion = "2.5.0-rc1"
+}
+
 android {
 
     defaultConfig {
@@ -24,10 +28,18 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    defaultConfig {
+        buildConfigField "String", "SDK_VERSION", "\"${sdkVersion}\""
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
-    //implementation "com.seamlesspay:android:2.0.4"
+    implementation "com.seamlesspay:android$sdkVersion"
     implementation libs.androidx.annotation
     implementation libs.androidx.appCompat
     implementation libs.androidx.coreKtx
