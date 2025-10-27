@@ -6,7 +6,7 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 version "1.0.1"
 
 ext {
-    sdkVersion = "2.5.0-rc1"
+    sdkVersion = "2.0.6"
 }
 
 android {
@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    implementation "com.seamlesspay:android$sdkVersion"
+    implementation "com.seamlesspay:android:$sdkVersion"
     implementation libs.androidx.annotation
     implementation libs.androidx.appCompat
     implementation libs.androidx.coreKtx

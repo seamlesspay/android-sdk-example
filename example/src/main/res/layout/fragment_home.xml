@@ -142,6 +142,7 @@
 					android:background="@color/colorOnSurfaceVariant"
 					android:clickable="true"
 					android:focusable="true"
+					android:visibility="gone"
 					android:foreground="?attr/selectableItemBackground"
 					android:orientation="horizontal"
 					android:padding="@dimen/margin_2x"

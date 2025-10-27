@@ -36,7 +36,7 @@
             android:animateLayoutChanges="true"
             android:layout_margin="@dimen/margin_3x"
             android:orientation="vertical"
-            android:background="@color/colorPrimaryVariant"
+            android:background="@color/colorOnSurfaceVariant"
             android:padding="@dimen/margin_2x"
             />
     </ScrollView>
