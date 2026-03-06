@@ -1,0 +1,6 @@
+# Claiming ownership over all files in the repository
+* @seamlesspay/client
+
+# Deployment protection
+/.github/ @seamlesspay/deployers
+/.scripts/ @seamlesspay/deployers
