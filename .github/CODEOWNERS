@@ -4,3 +4,10 @@
 # Deployment protection
 /.github/ @seamlesspay/deployers
 /.scripts/ @seamlesspay/deployers
+/example/build.gradle @seamlesspay/deployers
+/example/gradle.properties @seamlesspay/deployers
+/gradle/ @seamlesspay/deployers
+/.travis.yml @seamlesspay/deployers
+/build.gradle @seamlesspay/deployers
+/dependencies.gradle @seamlesspay/deployers
+/settings.gradle @seamlesspay/deployers
