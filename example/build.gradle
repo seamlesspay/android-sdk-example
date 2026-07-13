@@ -3,10 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
-version "2.0.0"
+version "2.1.0"
 
 ext {
-    sdkVersion = "2.0.6"
+    sdkVersion = "2.1.0"
 }
 
 android {
