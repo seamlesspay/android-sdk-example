@@ -13,11 +13,13 @@ permissions:
 jobs:
   release-lifecycle:
     name: Manage Release Lifecycle
-    uses: seamlesspay/pipelines/.github/workflows/release-lifecycle.yml@main
+    uses: ./.github/workflows/release-lifecycle-reusable.yml
     with:
       release-type: ${{ vars.RELEASE_PLEASE_TYPE }}
       repo-key: ${{ vars.REPO_KEY }}
     secrets:
       RELEASE_PLEASE_WRITER_TOKEN: ${{ secrets.RELEASE_PLEASE_WRITER_TOKEN }}
+      JIRA_RELEASE_PREP_WEBHOOK_URL: ${{ secrets.JIRA_RELEASE_PREP_WEBHOOK_URL }}
       JIRA_RELEASE_PREP_WEBHOOK_SECRET: ${{ secrets.JIRA_RELEASE_PREP_WEBHOOK_SECRET }}
+      JIRA_RELEASE_COMPLETION_WEBHOOK_URL: ${{ secrets.JIRA_RELEASE_COMPLETION_WEBHOOK_URL }}
       JIRA_RELEASE_COMPLETION_WEBHOOK_SECRET: ${{ secrets.JIRA_RELEASE_COMPLETION_WEBHOOK_SECRET }}

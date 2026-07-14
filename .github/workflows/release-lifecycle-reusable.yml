@@ -1,0 +1,71 @@
+name: Release Lifecycle (Reusable)
+
+on:
+  workflow_call:
+    inputs:
+      release-type:
+        description: Release type passed to release-please (e.g. simple, elixir, python)
+        required: true
+        type: string
+      repo-key:
+        description: Jira project key used to associate releases with the correct project (e.g. MYPROJ)
+        required: true
+        type: string
+    secrets:
+      RELEASE_PLEASE_WRITER_TOKEN:
+        description: GitHub token for creating releases (use PAT to trigger downstream workflows)
+        required: true
+      JIRA_RELEASE_PREP_WEBHOOK_URL:
+        description: Webhook URL for sending release prep notifications to Jira
+        required: true
+      JIRA_RELEASE_PREP_WEBHOOK_SECRET:
+        description: Auth token for sending release prep webhook to Jira
+        required: true
+      JIRA_RELEASE_COMPLETION_WEBHOOK_URL:
+        description: Webhook URL for sending release completion notifications to Jira
+        required: true
+      JIRA_RELEASE_COMPLETION_WEBHOOK_SECRET:
+        description: Auth token for sending release completion webhook to Jira
+        required: true
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release-lifecycle:
+    name: Manage Release Lifecycle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open or update release PR
+        id: prepare-release
+        uses: googleapis/release-please-action@v4
+        with:
+          release-type: ${{ inputs.release-type }}
+          token: ${{ secrets.RELEASE_PLEASE_WRITER_TOKEN }}
+      - name: Notify Jira of pending release
+        if: ${{ steps.prepare-release.outputs.pr != '' }}
+        env:
+          PR: ${{ steps.prepare-release.outputs.pr }}
+        run: |
+          curl -X POST ${{ secrets.JIRA_RELEASE_PREP_WEBHOOK_URL }} \
+            -H 'Content-type: application/json' \
+            -H 'X-Automation-Webhook-Token: ${{ secrets.JIRA_RELEASE_PREP_WEBHOOK_SECRET }}' \
+            --data "$(echo "$PR" | jq '{
+              data: {
+                issues: (.body | [scan("\\*\\*[A-Z]+-[0-9]+:\\*\\*") | ltrimstr("**") | rtrimstr(":**")] | unique),
+                key: "${{ inputs.repo-key }}",
+                version: (.title | match("[0-9]+\\.[0-9]+\\.[0-9]+").string)
+              }
+            }')"
+      - name: Notify Jira of completed release
+        if: ${{ steps.prepare-release.outputs.release_created != '' }}
+        run: |
+          curl -X POST ${{ secrets.JIRA_RELEASE_COMPLETION_WEBHOOK_URL }} \
+            -H 'Content-type: application/json' \
+            -H 'X-Automation-Webhook-Token: ${{ secrets.JIRA_RELEASE_COMPLETION_WEBHOOK_SECRET }}' \
+            --data '{
+              "key": "${{ inputs.repo-key }}",
+              "version": "${{ steps.prepare-release.outputs.version }}"
+            }'
